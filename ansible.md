@@ -14,7 +14,10 @@ ansible nodes -m shell -a "lsb_release -a"
 ansible nodes -a "lsb_release -a"
 
 # execute a playbook {-K flag is used to input superuser password}
-ansible-playbook installpackages.yaml -K
+ansible-playbook playbook.yml -K
+
+# run a play book locally
+ansible-playbook --connection=local --inventory 127.0.0.1, playbook.yml
 
 # vault commands
 ansibe-vault {create,edit,view,encrypt,decrypt} file.yml
@@ -23,8 +26,13 @@ ansibe-vault {create,edit,view,encrypt,decrypt} file.yml
 ansible-playbook file.yml --ask-vault-pass -K
 ansible-playbook file.yml --vault-passworld-file /path/to/pass-file -K
 
+# ansible-pull
+ansible-pull -U https://url/to/fetch/from
+# only pulls if there are any changes in the repo
+ansible-pull -o -U https://url/to/fetch/from
+
 # oneline command
-ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u <username> -i '${self.ipv4_address},' --private-key /path/to/file -e 'pub_key=/path/to/file' ansible_become_pass=<password> file.yml
+ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u <username> -i 'ip-address,' --private-key /path/to/file -e 'pub_key=/path/to/file' ansible_become_pass=<password> file.yml
 
 
 ```

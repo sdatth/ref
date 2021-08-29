@@ -35,6 +35,7 @@
 32. minikube
 33. docker-credential-pass (https://github.com/docker/docker-credential-helpers)
 34. git-secret (https://github.com/sobolevn/git-secret)
+35. molecule
 
 ### GUI tools
 1. gvim
@@ -116,6 +117,8 @@
 
 ### pip packages
 1. bpytop
+2. molecule
+3. docker
 
 <br>
 
