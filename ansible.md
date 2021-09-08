@@ -20,7 +20,8 @@ ansible-playbook playbook.yml -K
 ansible-playbook --connection=local --inventory 127.0.0.1, playbook.yml
 
 # vault commands
-ansibe-vault {create,edit,view,encrypt,decrypt} file.yml
+ansible-vault {create,edit,view,encrypt,decrypt} file.yml
+ansible-vault edit --vault-passworld-file /path/to/pass-file file.yml
 
 # use vault
 ansible-playbook file.yml --ask-vault-pass -K

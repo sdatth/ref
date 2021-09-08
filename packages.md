@@ -36,6 +36,10 @@
 33. docker-credential-pass (https://github.com/docker/docker-credential-helpers)
 34. git-secret (https://github.com/sobolevn/git-secret)
 35. molecule
+36. ctop (https://github.com/bcicen/ctop)
+37. kind (https://github.com/kubernetes-sigs/kind)
+38. k3d (https://github.com/rancher/k3d)
+39. go
 
 ### GUI tools
 1. gvim
@@ -83,6 +87,7 @@
 43. vlc
 44. wireshark
 45. yubikey personlization tool
+46. syncthing
 
 ### AppImages
 1. balena etcher
@@ -108,6 +113,7 @@
 14. typora
 15. vagrant
 16. terraform
+17. syncthing
 
 ### snap packages
 1. mailspring
@@ -119,6 +125,14 @@
 1. bpytop
 2. molecule
 3. docker
+
+## docker containers
+1. portainer
+2. nginx proxy manager
+3. heimdall
+4. watchtower
+5. httpd
+6. nginx
 
 <br>
 
