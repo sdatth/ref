@@ -40,6 +40,7 @@
 37. kind (https://github.com/kubernetes-sigs/kind)
 38. k3d (https://github.com/rancher/k3d)
 39. go
+40. gh (https://github.com/cli/cli)
 
 ### GUI tools
 1. gvim
@@ -114,6 +115,7 @@
 15. vagrant
 16. terraform
 17. syncthing
+18. gh (github cli)
 
 ### snap packages
 1. mailspring
