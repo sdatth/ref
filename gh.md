@@ -1,7 +1,10 @@
 # gh
 
 execute this command to create an alias to delete repo 
-'''gh alias set repo-delete 'api -X DELETE "repos/$1"''''
+```bash
+# PAT required with delete-repo permission
+gh alias set repo-delete 'api -X DELETE "repos/$1"'
+```
 
 ### commands
 ```bash
