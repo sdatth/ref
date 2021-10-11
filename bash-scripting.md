@@ -22,6 +22,62 @@ read -sp "Enter secret code " code
 echo $code
 echo "this text will be in a file" > file1
 
+# array
+  Fruits=('Apple' 'Banana' 'Oranges')
+
+  Fruits[0]="Apple"
+  Fruits[1]="Banana"
+  Fruits[2]="Oranges"
+
+  # array operations
+  Fruits=("${Fruits[@]}" "Watermelon")    # Push
+  Fruits+=('Watermelon')                  # Also Push
+  unset Fruits[2]                         # Remove one item
+  Fruits=("${Fruits[@]}")                 # Duplicate
+  Fruits=("${Fruits[@]}" "${Veggies[@]}") # Concatenate
+  lines=(`cat "logfile"`)                 # Read from file
+
+  # working with arryas
+  echo ${Fruits[0]}           # Element #0
+  echo ${Fruits[-1]}          # Last element
+  echo ${Fruits[@]}           # All elements, space-separated
+  echo ${#Fruits[@]}          # Number of elements
+  echo ${#Fruits}             # String length of the 1st element
+  echo ${#Fruits[3]}          # String length of the Nth element
+  echo ${Fruits[@]:3:2}       # Range (from position 3, length 2)
+  echo ${!Fruits[@]}          # Keys of all elements, space-separated
+
+  # iteration
+  for i in "${arrayName[@]}"; do
+    echo $i
+  done
+
+# dictionary
+  # Declares sound as a Dictionary object (aka associative array).
+  declare -A sounds
+
+  sounds[dog]="bark"
+  sounds[cow]="moo"
+  sounds[bird]="tweet"
+  sounds[wolf]="howl"
+
+  # working with dictionaries
+  echo ${sounds[dog]} # Dog's sound
+  echo ${sounds[@]}   # All values
+  echo ${!sounds[@]}  # All keys
+  echo ${#sounds[@]}  # Number of elements
+  unset sounds[dog]   # Delete dog
+
+  # iteration over values
+  for val in "${sounds[@]}"; do
+    echo $val
+  done
+
+  # iteration over keys
+  for key in "${!sounds[@]}"; do
+    echo $key
+  done
+
 # math
 num1=1
 num2=1
@@ -65,12 +121,27 @@ fi
 # nested execution
 echo $(( myvar = 7 + $(( vartwo = 4 + 4 )) ))
 
-# print multiple lines (END word can be replaced with anything)
+# print multiple lines ('END' word can be replaced with anything)
 cat<< END
 this is a big paragraph
 and it can be in multiple 
 lines like this
 END
+
+# functions 
+myfunction() {
+    echo "hello $1 $2"
+}
+
+myfunction "John" "maclarne"
+
+# return values
+# echo in functions doesn't print the value but acts like 'return' similar to other progamming language 
+myfunc() {
+    local myresult='some value'
+    echo $myresult              
+}
+result="$(myfunc)"
 
 # when a function is called within a variable var=$(funcation_name) , then all the multiple echo statements made inside the function would accumulate in "var"
 function1(){
@@ -134,7 +205,7 @@ fi
 
 # -e flag checks whether a file exists or not
 # -f checks whether it is a normal file
-# -r chechs if it is readable
+# -r checks if it is readable
 # -w checks if it is writable
 # -x checks if it is executable
 # -d checks if it is a directory
@@ -144,9 +215,9 @@ fi
 file="./file2"
 
 if [ -e $file  ]; then
-        echo "$file exists"
-    else
-        echo "$file doesn't exist"
+    echo "$file exists"
+else
+    echo "$file doesn't exist"
 fi
 
 #case 
@@ -166,6 +237,51 @@ case $age in
     *)           
         echo "too old for school"
 esac
+
+# example function with switch case
+ex ()
+{
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1   ;;
+      *.tar.gz)    tar xzf $1   ;;
+      *.tar.xz)    tar xJf $1   ;;
+      *.bz2)       bunzip2 $1   ;;
+      *.rar)       unrar x $1   ;;
+      *.gz)        gunzip $1    ;;
+      *.tar)       tar xf $1    ;;
+      *.tbz2)      tar xjf $1   ;;
+      *.tgz)       tar xzf $1   ;;
+      *.zip)       unzip $1     ;;
+      *.Z)         uncompress $1;;
+      *.7z)        7z x $1      ;;
+      *)           echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
+
+
+# while loop
+while true; do
+  echo "this is an infinite loop"
+done
+
+# reading lines 
+cat file.txt | while read line; do
+  echo $line
+done
+
+# C-like for loop
+for ((i = 0 ; i < 100 ; i++)); do
+  echo $i
+done
+
+# for loop using range
+for i in {1..5}; do
+  echo "Welcome $i"
+done
 
 ```
 
