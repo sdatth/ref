@@ -1,0 +1,26 @@
+---
+- name: apt module
+  hosts: all
+  become: yes
+  tasks:
+    - name: make sure net-tools are installed on all nodes
+      ansible.builtin.apt:
+        update_cache: yes
+        update_cache_retries: 5
+        update_cache_retry_max_delay: 5
+        name: net-tools
+        state: latest
+
+    - name: install multiple tools
+      ansible.builtin.apt:
+        - tmux
+        - fd-find
+        - ranger  
+
+    - name: Remove useless packages from the cache
+      ansible.builtin.apt:
+        autoclean: yes
+
+    - name: Remove dependencies that are no longer required
+      ansible.builtin.apt:
+        autoremove: yes      

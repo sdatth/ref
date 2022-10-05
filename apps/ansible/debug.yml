@@ -1,0 +1,9 @@
+---
+- name: debug module
+  hosts: all
+  tasks:
+    - ansible.builtin.shell: ls
+      register: shell_result
+
+    - ansible.builtin.debug:
+        var: shell_result.stdout_lines

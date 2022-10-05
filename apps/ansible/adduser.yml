@@ -1,0 +1,19 @@
+---
+- hosts: node
+  become: yes
+  tasks:
+  - name: add user 
+    ansible.builtin.user:
+      name: username
+      shell: /bin/bash
+      groups: sudo
+      append: yes
+      create_home: yes
+      password: "{{ 'password_here' | password_hash('sha512') }}"
+  
+  - name: install public keys on nodes
+    ansible.posix.authorized_key:
+      user: username
+      state: present
+      key: "{{ lookup('file', '~/.ssh/key.pub') }}"
+  

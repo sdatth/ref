@@ -1,0 +1,11 @@
+---
+- name: "Playing with Ansible"
+  hosts: 127.0.0.1   # or localhost can be used
+  connection: local 
+  tasks:
+
+    - name: "just execute a ls -la command"
+      ansible.builtin.shell: ls -la
+      register: output
+
+    - debug: var=output.stdout_lines
