@@ -1,0 +1,19 @@
+version: '3.3'
+
+networks:
+  npm_default:
+    external: true
+
+services:
+    filebrowser:
+        container_name: file-browser
+        user: '1000:1000'
+        volumes:
+            - '/home/zeta/:/srv'
+            - '/home/zeta/drive/docker/filebrowser/filebrowser.db:/database.db'
+        image: 'filebrowser/filebrowser:latest'
+        restart: always
+        networks:
+          - npm_default
+
+# Note - create an empty file called filebrowser.db in the required location before running the file

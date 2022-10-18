@@ -1,0 +1,15 @@
+version: '3.3'
+
+networks:
+  npm_default:
+    external: true
+    
+services:
+    homer:
+        container_name: homer
+        volumes:
+            - '/home/zeta/homer:/www/assets'
+        restart: always
+        image: 'b4bz/homer:latest'
+        networks:
+          - npm_default

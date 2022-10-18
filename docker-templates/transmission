@@ -1,0 +1,28 @@
+---
+version: "2.1"
+
+networks:
+  npm_default:
+    external: true
+    
+services:
+  transmission:
+    image: lscr.io/linuxserver/transmission:latest
+    container_name: transmission
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Kolkata
+      - USER=admin
+      - PASS=password
+      - PEERPORT=51413
+    volumes:
+      - /home/zeta/drive/docker/transmission/config:/config
+      - /home/zeta/drive/docker/transmission/downloads:/downloads
+      - /home/zeta/drive/docker/transmission/watch:/watch
+    ports:
+      - 51413:51413
+      - 51413:51413/udp
+    restart: always
+    networks:
+      - npm_default

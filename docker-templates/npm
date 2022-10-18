@@ -1,0 +1,11 @@
+version: '3'
+services:
+  app:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: always
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - /home/zeta/drive/docker/npm/data:/data
+      - /home/zeta/drive/docker/npm/certs:/etc/letsencrypt
