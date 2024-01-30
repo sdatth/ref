@@ -27,7 +27,7 @@ print ("Your name contains "  + str(len(name)) + " charactors" )
 user_name = "dani"
 # 1user = "dani1"  # number cannot start at the beginning of the variable but can at the end or middle  
 
-# Brand name generator
+# Project - Brand name generator
 print ("Welcome to the Band Name Generator.")
 street = input("What's the name of the city you grew up in?\n")
 pet = input("What's your pet's name?\n")
