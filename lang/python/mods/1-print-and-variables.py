@@ -1,12 +1,18 @@
+''' This is a multi line comment
+line 2 
+line 3
+'''
+
 # everything between double quotes will be printed
 print ("print('what to print')")
 
 # Add new line by using \n
 print ("Hello world\nHello world\n Hello world")
-# Output - 
-#Hello world
-#Hello world
-# Hello world
+'''Output - 
+Hello world
+Hello world
+ Hello world
+'''
 
 # String concatenation
 print ("Hello" + " " + "Angela")  # will print out 'Hello Angela'
@@ -32,4 +38,5 @@ print ("Welcome to the Band Name Generator.")
 street = input("What's the name of the city you grew up in?\n")
 pet = input("What's your pet's name?\n")
 print ("Your band name could be " + street + " " + pet)
+
 

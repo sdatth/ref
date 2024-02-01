@@ -1,14 +1,27 @@
-#If the bill was $150.00, split between 5 people, with 12% tip. 
-#Round the result to 2 decimal places.
+print("The Love Calculator is calculating your score...")
+name1 = input() # What is your name?
+name2 = input() # What is their name?
 
-print("Welcome to the tip calculator!")
-bill = float(input("What was the total bill? $"))
-tip = int(input("How much tip would you like to give? 10, 12, or 15? "))
-people = int(input("How many people to split the bill?"))
+concat_name = name1.lower() + name2.lower()
+d1 = 0
+d2 = 0 
+# Iterate over the string
+for element in concat_name:
+    if element == "t" or element == "r" or element == "u" or element == "e":
+        d1 += 1
 
-tip_as_percent = tip / 100
-total_tip_amount = bill * tip_as_percent
-total_bill = bill + total_tip_amount
-bill_per_person = total_bill / people
-final_amount = round(bill_per_person, 2)                  ## this doesn't round to 2 if there are no decimal present
-print(f"Each person should pay: {bill_per_person:.2f}")   ## it needs formating not round function
+    if element == "l" or element == "o" or element == "v" or element == "e":
+        d2 += 1
+
+score = int(str(d1) + str(d2))
+
+if score <= 10 or score >= 90:
+    print (f"Your score is {score}, you go together like coke and mentos.")
+
+elif score > 40 and score < 50:
+    print(f"Your score is {score}, you are alright together.")
+
+else:
+    print(f"Your score is {score}.")
+
+
