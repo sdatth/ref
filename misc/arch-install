@@ -90,6 +90,7 @@ vagrant plugin install vagrant-libvirt
 pacman -S firefox snapper snap-pac ntfs-3g virtualbox virtualbox-guest-iso virtualbox-guest-utils virtualbox-host-modules-arch syncthing flatpak openresolv
 pacman -S rclone doas nano wget libreoffice-fresh obs-studio ufw vlc wireshark-qt transmission-gtk chromium rsync nextcloud-client python-nautilus rust go
 pacman -S bat btop cowsay eza fd figlet fish glow lolcat neofetch neovim starship stow zsh fzf screen
+pacman -S docker docker-compose podman distrobox
 
 #nvidia drivers
 pacman -S nvidia nvidia-utils nvidia-settings 
