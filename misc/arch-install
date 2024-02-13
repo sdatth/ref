@@ -92,8 +92,14 @@ pacman -S rclone doas nano wget libreoffice-fresh obs-studio ufw vlc wireshark-q
 pacman -S bat btop cowsay eza fd figlet fish glow lolcat neofetch neovim starship stow zsh fzf screen
 pacman -S docker docker-compose podman distrobox
 
+# font issue for other language 
+pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji
+
 #nvidia drivers
 pacman -S nvidia nvidia-utils nvidia-settings 
+
+# flathub apps
+spotify flatseal
 
 # vscode settings (make sure dotfiles make file has installed necessary fonts)
 go settings or preferences and under "Font Family" input "FiraCode Nerd Font"
