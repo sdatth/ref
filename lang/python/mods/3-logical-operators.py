@@ -20,15 +20,15 @@ else:
 # Nested If
 # Python program to demonstrate 
 # nested if statement 
-  
+
 num = 15
-if num >= 0: 
-    if num == 0: 
-        print("Zero") 
-    else: 
-        print("Positive number") 
-else: 
-    print("Negative number") 
+if num >= 0:
+    if num == 0:
+        print("Zero")
+    else:
+        print("Positive number")
+else:
+    print("Negative number")
 
 
 # Elif
@@ -60,11 +60,11 @@ if height >= 120:
   else:
     bill = 12
     print("Adult tickets are $12.")
-  
+
   wants_photo = input("Do you want a photo taken? Y or N. ")
   if wants_photo == "Y":
     bill += 3
-  
+
   print(f"Your final bill is ${bill}")
 
 else:
@@ -78,7 +78,7 @@ name2 = input() # What is their name?
 
 concat_name = name1.lower() + name2.lower()
 d1 = 0
-d2 = 0 
+d2 = 0
 # Iterate over the string
 for element in concat_name:
     if element == "t" or element == "r" or element == "u" or element == "e":
@@ -96,7 +96,7 @@ elif score > 40 and score < 50:
     print(f"Your score is {score}, you are alright together.")
 
 else:
-    print(f"Your score is {score}.") 
+    print(f"Your score is {score}.")
 
 
 

@@ -45,13 +45,13 @@ two_digit_number = input( "Enter two digit number ")
 a = int(two_digit_number[0])
 b = int(two_digit_number[1])
 print(a+b)
- 
+
 # Maths in python
 # priority is PEMDAS Parenthese () , Exponents ** , Multiplication * , Division / , Addition + , Substraction -
 
 # BMI Calculator 
 # BMI = Weight / Height^2 
-bmi = int(weight) / ((float(height))**2)  
+bmi = int(weight) / ((float(height))**2)
 
 # Round function to round of a number
 
