@@ -59,7 +59,8 @@ mkinitcpio -P
 
 blikd
 vim  /etc/default/grub (cryptdevice=UUID=dsfsdfsdf:cryptroot root=/dev/mapper/ nvidia-drm.modeset=1)
-grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/boot --bootloader-id=GRUB
+#grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/boot --bootloader-id=GRUB
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
 
 #gnome
