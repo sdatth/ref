@@ -32,6 +32,7 @@ mount /dev/sda1 /mnt/boot
 
 pacstrap -K /mnt base linux linux-headers linux-firmware vim git sudo networkmanager vi grub grub-btrfs btrfs-progs openssh base-devel amd-ucode dosfstools efibootmgr
 genfstab -U /mnt >> /mnt/etc/fstab
+arch-chroot /mnt
 ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 hwclock --systohc
 echo "arch" >> /etc/hostname
