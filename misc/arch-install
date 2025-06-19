@@ -46,27 +46,33 @@ useradd -m dev
 passwd dev
 sudo mkdir /etc/pacman.d/hooks/
 visudo  # inside the file add this line  "dev ALL=(ALL) ALL" below "root ALL=(ALL) ALL"
+systemctl enable NetworkManager
 
 # virtualbox
 pacman -S virtualbox-guest-utils
 systemctl enable vboxservice.service
 
-vim /etc/mkinitcpio.conf  
+vim /etc/mkinitcpio.conf
 MODULES=(btrfs vboxguest vboxsf vboxvideo) # only include vbox mods incase running on a vbox
 MODULES=(btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm) # only include nvidia mods incase you want wayland
-BINARIES=(/usr/bin/btrfs) 
-HOOKS=(base udev autodetect modconf block encrypt filesystems keyboard fsck grub-btrfs-overlayfs) 
+BINARIES=(/usr/bin/btrfs)
+HOOKS=(base udev autodetect modconf block encrypt filesystems keyboard fsck grub-btrfs-overlayfs)
 mkinitcpio -P
 
 blikd
-vim  /etc/default/grub (cryptdevice=UUID=dsfsdfsdf:cryptroot root=/dev/mapper/ nvidia-drm.modeset=1)
+vim  /etc/default/grub { in the grub default line (cryptdevice=UUID=dsfsdfsdf:cryptroot root=/dev/mapper/cryptroot nvidia-drm.modeset=1) }
 #grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/boot --bootloader-id=GRUB
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
+exit
+reboot
 
 #gnome
 sudo pacman -S xorg gdm gnome gnome-extra gnome-tweaks
 sudo systemctl enable gdm
+
+#nvidia drivers
+pacman -S nvidia nvidia-utils nvidia-settings
 
 #xfce4
 sudo pacman -S --noconfirm xorg lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings xfce4 xfce4-goodies
@@ -75,7 +81,7 @@ sudo systemctl enable lightdm
 # kvm
 pacman -S qemu-full virt-manager virt-viewer dnsmasq vde2 bridge-utils openbsd-netcat dmidecode ebtables iptables libguestfs vagrant
 
-vim /etc/libvirt/libvirtd.conf 
+vim /etc/libvirt/libvirtd.conf
 #uncomment below lines
 -------------------------------
 unix_sock_group = "libvirt"
@@ -94,11 +100,8 @@ pacman -S rclone doas nano wget libreoffice-fresh obs-studio ufw vlc wireshark-q
 pacman -S bat btop cowsay eza fd figlet fish glow lolcat neofetch neovim starship stow zsh fzf screen
 pacman -S docker docker-compose podman distrobox
 
-# font issue for other language 
+# font issue for other language
 pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji
-
-#nvidia drivers
-pacman -S nvidia nvidia-utils nvidia-settings 
 
 # flathub apps
 spotify flatseal
@@ -113,7 +116,7 @@ snapper --no-dbus -c root create-config /
 rmdir /.snapshots/
 mkdir /.snapshots/
 mount /.snapshots/
-snapper --no-dbus -c home create-config /home/ 
+snapper --no-dbus -c home create-config /home/
 
 # configure snapper root
 sudo vim /etc/snapper/configs/root
@@ -176,7 +179,7 @@ snapper --ambit classic rollback 3
 systemctl enable --now snapper-timeline.timer
 systemctl enable --now snapper-cleanup.timer
 
-# home rollback 
+# home rollback
 snapper -c home undochange 1..2  # undo changes whatever happened after 1 till 2
 snapper -c home undochange 2..1  # redo whatever was undone by above command
 
@@ -219,11 +222,10 @@ Description=Update NVIDIA module in initcpio
 Depends=mkinitcpio
 When=PostTransaction
 NeedsTargets
-Exec=/bin/sh -c 'while read -r trg; do case $trg in linux*) exit 0; esac; done; /usr/bin/mkinitcpio -P' 
+Exec=/bin/sh -c 'while read -r trg; do case $trg in linux*) exit 0; esac; done; /usr/bin/mkinitcpio -P'
 
 
 # vs code extensions
-python 
+python
 code runner
 Gruvbox Theme
-
