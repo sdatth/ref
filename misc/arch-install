@@ -71,6 +71,9 @@ reboot
 sudo pacman -S xorg gdm gnome gnome-extra gnome-tweaks
 sudo systemctl enable gdm
 
+###### important (focus follows mouse) with multiple monitors keyboard inputs are directed to mouse pointed window without clicking on the window
+gsettings set org.gnome.desktop.wm.preferences focus-mode 'sloppy'
+
 #nvidia drivers
 pacman -S nvidia nvidia-utils nvidia-settings
 
